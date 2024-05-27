@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <img src="images/bg-main-desktop.png" alt="main gradient background color" class="img-main">
+    <section class="form-container">
+      <div class="bg-card-front">
+        <img src="images/card-logo.svg" alt="card logo">
+        <p class="card-number">
+          0000 0000 0000 0000
+        </p>
+        <p class="card-username">jane appleseed</p>
+        <p class="card-expiration-date">00/00</p>
+      </div>
+      <div class="bg-card-back">
+        <p>000</p>
+      </div>
+      <form onsubmit="return handleSubmit(this);">
+        <div class="field">
+          <label for="name">Cardholder Name</label>
+          <input type="text" name="name" id="name" placeholder="e.g. Jane Appleseed">
+          <span class="error">Can't be blank</span>
+        </div>
+        <div class="field">
+          <label for="card-number">Card Number</label>
+          <input type="number" name="cardNumber" id="card-number" placeholder="e.g. 1234 5678 9123 0000">
+          <span class="error">wrong format numbers only</span>
+        </div>
+        <section class="row">
+          <div class="field field-row">
+            <label for="exp-date">Exp. Date (MM/YY)</label>
+            <div class="row-exp">
+              <input type="number" name="month" id="exp-date" placeholder="MM">
+              <input type="number" name="year" id="exp-date" placeholder="YY">
+            </div>
+            <span class="error">can't be blank</span>
+          </div>
+          <div class="field field-row">
+            <label for="cvc">CVC</label>
+            <input type="number" name="cvc" id="cvc" placeholder="e.g. 123">
+            <span class="error">Can't be blank</span>
+          </div>
+        </section>
+        <button>Confirm</button>
+      </form>
+    </section>
+
+    <!-- 0000 0000 0000 0000
+    Jane Appleseed
+    00/00
+
+    000 -->
+  </div>
+
+
+
+  <!-- Completed state start -->
+  <section class="success">
+    <img src="images/icon-complete.svg" alt="success">
+    <h2>Thank you!</h2>
+    <p>We've added your card details</p>
+    <button>Continue</button>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

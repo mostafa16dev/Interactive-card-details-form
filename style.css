@@ -1,0 +1,137 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.container .form-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+}
+.container .form-container .bg-card-front {
+  background: url(/images/bg-card-front.png);
+  width: 447px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  position: absolute;
+  top: 27vh;
+  bottom: 0;
+  left: -22.2vw;
+  padding: 1.55em 1.78em;
+  color: hsl(0, 0%, 100%);
+}
+.container .form-container .bg-card-front .card-number {
+  font-size: 1.5em;
+  font-weight: 400;
+  letter-spacing: 4.1px;
+  position: relative;
+  top: 2.2em;
+}
+.container .form-container .bg-card-front .card-username,
+.container .form-container .bg-card-front .card-expiration-date {
+  position: relative;
+  top: 6.1em;
+  text-transform: uppercase;
+  font-size: 0.78em;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+.container .form-container .bg-card-front .card-expiration-date {
+  left: 24.7em;
+  top: 5em;
+  font-size: 0.75em;
+}
+.container .form-container .bg-card-back {
+  background: url(/images/bg-card-back.png);
+  width: 447px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  position: absolute;
+  top: 67.9vh;
+  bottom: 0;
+  left: -15.6vw;
+}
+.container .form-container .bg-card-back p {
+  font-size: 0.78em;
+  letter-spacing: 2px;
+  position: relative;
+  top: 7.9em;
+  left: 25.4em;
+  color: hsl(0, 0%, 100%);
+}
+.container .form-container form {
+  grid-template-columns: 380px;
+  height: 350px;
+  display: grid;
+  margin-left: 8.4vw;
+  /* align-content: space-between; */
+  align-items: start;
+  row-gap: 0.8em;
+  box-sizing: content-box;
+}
+.container .form-container form .field {
+  display: grid;
+  row-gap: 0.5em;
+}
+.container .form-container form .field label {
+  text-transform: uppercase;
+  font-size: 0.67em;
+  color: hsl(278, 68%, 11%);
+  letter-spacing: 1.94px;
+  font-weight: 600;
+}
+.container .form-container form .field input {
+  height: 45px;
+  border: 1px solid hsl(270, 3%, 87%);
+  border-radius: 8px;
+  padding: 0 0.85em 0;
+}
+.container .form-container form .field input::placeholder {
+  color: hsl(270, 3%, 87%);
+}
+.container .form-container form .field .error {
+  color: hsl(0, 100%, 66%);
+  font-size: 0.68em;
+}
+.container .form-container form .field .error::first-letter {
+  text-transform: capitalize;
+}
+.container .form-container form .row, .container .form-container form .row .row-exp {
+  display: grid;
+  grid-template-columns: calc(50% - 10px) 50%;
+  column-gap: 10px;
+}
+.container .form-container form .row .row-exp {
+  grid-template-columns: repeat(2, calc(50% - 10px));
+}
+.container .form-container form .row .field-row input {
+  width: 100%;
+}
+.container .form-container form button {
+  height: 54px;
+  align-self: end;
+  background-color: hsl(278, 68%, 11%);
+  color: hsl(270, 3%, 87%);
+  border: none;
+  border-radius: 0.4em;
+  font-weight: 400;
+}
+
+.success {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

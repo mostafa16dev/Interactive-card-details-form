@@ -1,0 +1,162 @@
+$red-color: hsl(0, 100%, 66%);
+$white-color: hsl(0, 0%, 100%);
+$light-grayish-violet: hsl(270, 3%, 87%);
+$dark-grayish-violet: hsl(279, 6%, 55%);
+$vary-dark-violet: hsl(278, 68%, 11%);
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    .form-container {
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+
+        .bg-card-front {
+            background: url(/images/bg-card-front.png);
+            width: 447px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: block;
+            position: absolute;
+            top: 27vh;
+            bottom: 0;
+            left: -22.2vw;
+            padding: 1.55em 1.78em;
+            color: $white-color;
+
+            .card-number {
+                font-size: 1.5em;
+                font-weight: 400;
+                letter-spacing: 4.1px;
+                position: relative;
+                top: 2.2em;
+            }
+
+            .card-username,
+            .card-expiration-date {
+                position: relative;
+                top: 6.1em;
+                text-transform: uppercase;
+                font-size: .78em;
+                letter-spacing: 2px;
+                font-weight: 400;
+            }
+
+            .card-expiration-date {
+                left: 24.7em;
+                top: 5em;
+                font-size: .75em;
+            }
+        }
+
+        .bg-card-back {
+            background: url(/images/bg-card-back.png);
+            width: 447px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: block;
+            position: absolute;
+            top: 67.9vh;
+            bottom: 0;
+            left: -15.6vw;
+
+            p {
+                font-size: .78em;
+                letter-spacing: 2px;
+                position: relative;
+                top: 7.9em;
+                left: 25.4em;
+                color: $white-color;
+            }
+        }
+
+        form {
+            grid-template-columns: 380px;
+            height: 350px;
+            display: grid;
+            margin-left: 8.4vw;
+            /* align-content: space-between; */
+            align-items: start;
+            row-gap: .8em;
+            box-sizing: content-box;
+
+            .field {
+                display: grid;
+                row-gap: .5em;
+
+                label {
+                    text-transform: uppercase;
+                    font-size: .67em;
+                    color: $vary-dark-violet;
+                    letter-spacing: 1.94px;
+                    font-weight: 600;
+                }
+
+                input {
+                    height: 45px;
+                    border: 1px solid $light-grayish-violet;
+                    border-radius: 8px;
+                    padding: 0 .85em 0;
+
+                    &::placeholder {
+                        color: $light-grayish-violet;
+                    }
+                }
+
+                .error {
+                    color: $red-color;
+                    font-size: .68em;
+                }
+
+                .error::first-letter {
+                    text-transform: capitalize;
+                }
+            }
+
+            .row {
+                display: grid;
+                grid-template-columns: calc(50% - 10px) 50%;
+                column-gap: 10px;
+
+                .row-exp {
+                    @extend .row;
+                    grid-template-columns: repeat(2, calc(50% - 10px));
+                }
+
+                .field-row input {
+                    width: 100%;
+                }
+            }
+
+            button {
+                height: 54px;
+                align-self: end;
+                background-color: $vary-dark-violet;
+                color: $light-grayish-violet;
+                border: none;
+                border-radius: .4em;
+                font-weight: 400;
+            }
+        }
+    }
+
+
+}
+
+.success {
+    display: none;
+}
