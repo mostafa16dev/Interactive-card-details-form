@@ -111,10 +111,16 @@ $vary-dark-violet: hsl(278, 68%, 11%);
                     border: 1px solid $light-grayish-violet;
                     border-radius: 8px;
                     padding: 0 .85em 0;
+                    cursor: pointer;
 
                     &::placeholder {
                         color: $light-grayish-violet;
                     }
+
+                    // &:focus {
+                    //     outline: none;
+                    //     border-color: $dark-grayish-violet;
+                    // }
                 }
 
                 .error {
@@ -150,6 +156,7 @@ $vary-dark-violet: hsl(278, 68%, 11%);
                 border: none;
                 border-radius: .4em;
                 font-weight: 400;
+                cursor: pointer;
             }
         }
     }

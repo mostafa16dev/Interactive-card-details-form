@@ -98,6 +98,7 @@
   border: 1px solid hsl(270, 3%, 87%);
   border-radius: 8px;
   padding: 0 0.85em 0;
+  cursor: pointer;
 }
 .container .form-container form .field input::placeholder {
   color: hsl(270, 3%, 87%);
@@ -128,6 +129,7 @@
   border: none;
   border-radius: 0.4em;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .success {
