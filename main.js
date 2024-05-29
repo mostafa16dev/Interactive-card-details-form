@@ -32,8 +32,8 @@ const handleSubmit = (formThis) => {
     } else {
         makeValidInputField(month);
     }
-    if(isEmptyField(year.value)){
-        makeInvalidInputField(year, ERROR_MESSAGE_BLANK);
+    if(validateYear(year.value) !== ''){
+        makeInvalidInputField(year, validateYear(year.value));
     } else {
         makeValidInputField(year);
     }
@@ -85,18 +85,28 @@ const validateExpiryDate = (month, year) => {
         error = 'Wrong format, numbers only';
     } else if(!isValidMonth(month)) {
         error = 'month must be between 1 and 12';
-    } else if(numberOfDigits(year) !== 2){
-        error = 'wrong format, year must be in YY format';
-    } else if(!isValidYear(year)) {
-        const lastTwoDigitsOfYear = new Date().getFullYear()% 100; 
-        error = `year must be greater than or equal to ${lastTwoDigitsOfYear} "current year"`;
+    } else if(validateYear(year) !== ''){
+        error = validateYear(year);
     }
+
     return error;
 }
 
-const isValidYear = year => {
+const validateYear = year => {
+    let error = '';
     const lastTwoDigitsOfYear = new Date().getFullYear()% 100; 
-    return isPositiveNumber(year) && year >= lastTwoDigitsOfYear;
+
+    if(isEmptyField(year)) {
+        error = "can't be blank";
+    } else if(!isPositiveNumber(year)) {
+        error = 'Wrong format, numbers only';
+    } else if(numberOfDigits(year) !== 2){
+        error = 'wrong format, year must be in YY format';
+    } else if(year < lastTwoDigitsOfYear) {
+        error = `year must be greater than or equal to ${lastTwoDigitsOfYear} "current year"`;
+    }
+    
+    return error;
 }
 
 const isValidMonth = month => {
