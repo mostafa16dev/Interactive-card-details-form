@@ -3,6 +3,7 @@ const  RED_COLOR = 'hsl(0, 100%, 66%)';
 const LIGHT_GRAYISH_VIOLET = 'hsl(270, 3%, 87%)';
 
 const ERROR_MESSAGE_BLANK = `Can't be blank`;
+const ERROR_MESSAGE_NEGATIVE_NUMBER = `wrong format, positive numbers only`;
 
 const handleSubmit = (formThis) => {
     // e.preventDefault();
@@ -51,10 +52,12 @@ const isEmptyField = (value) => {
     return value.trim() === "" || !value;
 }
 
-const isPositiveNumber = (value) => {
+const isNumber = (value) => {
     return !isNaN(value);
-//     value = parseInt(value);
-//     return value > 0 && Number.isInteger(value);
+}
+
+const isPositiveNumber = value => {
+    return value > 0;
 }
 
 const numberOfDigits = value => {
@@ -64,11 +67,14 @@ const numberOfDigits = value => {
 
 const validateCardNumber = value => {
     let error = '';
+    value = value.replaceAll(" ", "");
 
     if(isEmptyField(value)){
         error = "can't be blank";
-    } else if(!isPositiveNumber(value)) {
+    } else if(!isNumber(value)) {
         error = 'Wrong format, numbers only';
+    } else if(!isPositiveNumber(value)) {
+        error = ERROR_MESSAGE_NEGATIVE_NUMBER;
     } else if(numberOfDigits(value) !==  16) {
         error = 'Wrong format, must be 16 digits only';
     }
@@ -80,7 +86,7 @@ const validateExpiryDate = (month, year) => {
 
     if(isEmptyField(month) || isEmptyField(year)) {
         error = "can't be blank";
-    } else if(!isPositiveNumber(month) || !isPositiveNumber(year)){
+    } else if(!isNumber(month) || !isNumber(year)){
         error = 'Wrong format, numbers only';
     } else if(validatMonth(month) !== '') {
         error = validatMonth(month);
@@ -97,8 +103,10 @@ const validateYear = year => {
 
     if(isEmptyField(year)) {
         error = "can't be blank";
-    } else if(!isPositiveNumber(year)) {
+    } else if(!isNumber(year)) {
         error = 'Wrong format, numbers only';
+    } else if(!isPositiveNumber(year)) {
+        error = ERROR_MESSAGE_NEGATIVE_NUMBER;
     } else if(numberOfDigits(year) !== 2){
         error = 'wrong format, year must be in YY format';
     } else if(year < lastTwoDigitsOfYear) {
@@ -113,8 +121,10 @@ const validatMonth = month => {
 
     if(isEmptyField(month)) {
         error = "can't be blank";
-    } else if(!isPositiveNumber(month)) {
+    } else if(!isNumber(month)) {
         error = 'Wrong format, numbers only';
+    } else if(!isPositiveNumber(month)) {
+        error = ERROR_MESSAGE_NEGATIVE_NUMBER;
     } else if(month < 1 || month > 12) {
         error = 'month must be between 1 and 12';
     }
@@ -127,8 +137,10 @@ const validateCVC = value => {
 
     if(isEmptyField(value)) {
         error = "can't be blank";
-    } else if(!isPositiveNumber(value)) {
+    } else if(!isNumber(value)) {
         error = 'wrong format, numbers only';
+    } else if(!isPositiveNumber(value)) {
+        error = ERROR_MESSAGE_NEGATIVE_NUMBER;
     } else if(numberOfDigits(value) !== 3) {
         error = 'wrong, must be 3 digits only'
     }
@@ -163,3 +175,13 @@ const makeValidExpirationField = () =>{
     let expirationFieldError = document.getElementById('error-exp-date');
     expirationFieldError.innerHTML = '';
 }
+
+// add space between every 4 numbers in card number
+const input = document.getElementById("card-number");
+input.addEventListener("input", () => 
+    input.value = formatNumber(input.value.replaceAll(" ", "")));
+
+const formatNumber = (number) => number.split("").reduce((seed, next, index) => {
+  if (index !== 0 && !(index % 4)) seed += " ";
+  return seed + next;
+}, "");
