@@ -27,8 +27,8 @@ const handleSubmit = (formThis) => {
     } else {
         makeValidExpirationField();
     }
-    if(isEmptyField(month.value)) {
-        makeInvalidInputField(month, ERROR_MESSAGE_BLANK);
+    if(validatMonth(month.value) !== '') {
+        makeInvalidInputField(month, validatMonth(month.value));
     } else {
         makeValidInputField(month);
     }
@@ -37,7 +37,6 @@ const handleSubmit = (formThis) => {
     } else {
         makeValidInputField(year);
     }
-
     error = validateCVC(cvc.value);
     if(error !== ''){
        makeInvalidInputField(cvc, error); 
@@ -83,8 +82,8 @@ const validateExpiryDate = (month, year) => {
         error = "can't be blank";
     } else if(!isPositiveNumber(month) || !isPositiveNumber(year)){
         error = 'Wrong format, numbers only';
-    } else if(!isValidMonth(month)) {
-        error = 'month must be between 1 and 12';
+    } else if(validatMonth(month) !== '') {
+        error = validatMonth(month);
     } else if(validateYear(year) !== ''){
         error = validateYear(year);
     }
@@ -109,8 +108,18 @@ const validateYear = year => {
     return error;
 }
 
-const isValidMonth = month => {
-    return isPositiveNumber(month) && month >= 1 && month <= 12;
+const validatMonth = month => {
+    let error = '';
+
+    if(isEmptyField(month)) {
+        error = "can't be blank";
+    } else if(!isPositiveNumber(month)) {
+        error = 'Wrong format, numbers only';
+    } else if(month < 1 || month > 12) {
+        error = 'month must be between 1 and 12';
+    }
+
+    return error;
 }
 
 const validateCVC = value => {
