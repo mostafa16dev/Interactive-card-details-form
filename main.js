@@ -185,3 +185,29 @@ const formatNumber = (number) => number.split("").reduce((seed, next, index) => 
   if (index !== 0 && !(index % 4)) seed += " ";
   return seed + next;
 }, "");
+
+const changeName = name => {
+    const nameField = document.getElementById('card-username');
+    nameField.innerHTML = name;
+}
+
+const changeCardNumber = number => {
+    const cardNumberField = document.getElementById('front-card-number');
+    cardNumberField.innerHTML = number;
+}
+
+const changeExpirationMonth = number => {
+    const expirationMonthField = document.getElementById('card-expiration-date-month');
+    expirationMonthField.innerHTML = number
+}
+
+
+const changeExpirationYear = number => {
+    const expirationYearField = document.getElementById('card-expiration-date-year');
+    expirationYearField.innerHTML = number
+}
+
+const changeCVC = number => {
+    const cvcField = document.getElementById('back-cvc');
+    cvcField.innerHTML = number;
+}
