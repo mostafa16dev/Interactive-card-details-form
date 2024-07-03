@@ -8,9 +8,11 @@ const ERROR_MESSAGE_NEGATIVE_NUMBER = `wrong format, positive numbers only`;
 const handleSubmit = (formThis) => {
     // e.preventDefault();
     const { name, cardNumber, month, year, cvc } = formThis;
-    
+    let inValidField = false;
+
     if(isEmptyField(name.value)){
         makeInvalidInputField(name, ERROR_MESSAGE_BLANK);
+        inValidField = true;
     } else {
         makeValidInputField(name);
     }
@@ -18,31 +20,41 @@ const handleSubmit = (formThis) => {
     let error = validateCardNumber(cardNumber.value);
     if(error !== '') {
         makeInvalidInputField(cardNumber, error);
+        inValidField = true;
     } else {
         makeValidInputField(cardNumber);
     }
 
     error = validateExpiryDate(month.value, year.value);
     if(error !== '') {
-        makeInvalidExpirationField(error)
+        makeInvalidExpirationField(error);
+        inValidField = true;
     } else {
         makeValidExpirationField();
     }
     if(validatMonth(month.value) !== '') {
         makeInvalidInputField(month, validatMonth(month.value));
+        inValidField = true;
     } else {
         makeValidInputField(month);
     }
     if(validateYear(year.value) !== ''){
         makeInvalidInputField(year, validateYear(year.value));
+        inValidField = true;
     } else {
         makeValidInputField(year);
     }
     error = validateCVC(cvc.value);
     if(error !== ''){
        makeInvalidInputField(cvc, error); 
+       inValidField = true;
     } else {
         makeValidInputField(cvc);
+    }
+
+    if(!inValidField){ //success
+        document.getElementById('form').style.display  = 'none';
+        document.getElementById('success').style.display = 'grid';
     }
 
     return false; // prevent default event
