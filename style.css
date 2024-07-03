@@ -30,7 +30,7 @@
   position: relative;
 }
 .container .form-container .bg-card-front {
-  background: url("../images/bg-card-front.png");
+  background-image: url(./images/bg-card-front.png);
   top: 10.4em;
   bottom: 0;
   left: -17.7em;
@@ -104,7 +104,7 @@
   text-transform: inherit;
 }
 .container .form-container .bg-card-back {
-  background: url("../images/bg-card-back.png");
+  background-image: url(./images/bg-card-back.png);
   top: 26.05em;
   bottom: 0;
   left: -12.5em;
