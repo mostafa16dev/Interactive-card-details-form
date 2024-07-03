@@ -148,9 +148,9 @@ $breakpoint-mobile: 375px;
         .bg-card-front,
         .bg-card-back {
             height: 245px;
-            box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.24);
-            -webkit-box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.24);
-            -moz-box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.24);
+            box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.12);
+            -webkit-box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.12);
+            -moz-box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.12);
             border-radius: 12px;
             width: 447px;
             background-repeat: no-repeat;
@@ -159,7 +159,6 @@ $breakpoint-mobile: 375px;
             position: absolute;
 
             @media (max-width: $breakpoint-mobile) {
-                // box-shadow: none;
                 width: 286px;
                 height: 155px;
                 background-size: cover;
@@ -268,6 +267,10 @@ $breakpoint-mobile: 375px;
         justify-items: center;
         min-height: 290px;
 
+        @media (max-width: $breakpoint-mobile) {
+            margin-top: 4.5em;
+        }
+
         img {
             margin-bottom: 1.9em;
         }
@@ -295,6 +298,11 @@ $breakpoint-mobile: 375px;
             letter-spacing: .5px;
             border-radius: 8px;
             border: none;
+            cursor: pointer;
+
+            @media (max-width: $breakpoint-mobile) {
+                width: 95vw;
+            }
         }
     }
 

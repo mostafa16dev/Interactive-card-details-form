@@ -140,9 +140,9 @@
 .container .form-container .bg-card-front,
 .container .form-container .bg-card-back {
   height: 245px;
-  box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.24);
-  -webkit-box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.24);
-  -moz-box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.24);
+  box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.12);
+  -webkit-box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.12);
+  -moz-box-shadow: 0px 25px 60px 30px rgba(33, 9, 47, 0.12);
   border-radius: 12px;
   width: 447px;
   background-repeat: no-repeat;
@@ -246,6 +246,11 @@
   justify-items: center;
   min-height: 290px;
 }
+@media (max-width: 375px) {
+  .container .success {
+    margin-top: 4.5em;
+  }
+}
 .container .success img {
   margin-bottom: 1.9em;
 }
@@ -270,6 +275,12 @@
   letter-spacing: 0.5px;
   border-radius: 8px;
   border: none;
+  cursor: pointer;
+}
+@media (max-width: 375px) {
+  .container .success button {
+    width: 95vw;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
