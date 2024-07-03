@@ -223,3 +223,14 @@ const changeCVC = number => {
     const cvcField = document.getElementById('back-cvc');
     cvcField.innerHTML = number;
 }
+
+const resetForm = () => {
+    document.getElementById('form').reset();
+    changeName('jane appleseed');
+    changeCardNumber('0000000000000000');
+    changeExpirationMonth('00');
+    changeExpirationYear('00');
+    changeCVC('000')
+    document.getElementById('success').style.display = 'none';
+    document.getElementById('form').style.display  = 'grid';
+}
