@@ -20,7 +20,11 @@
 
 <body>
   <div class="container">
-    <img src="images/bg-main-desktop.png" alt="main gradient background color" class="img-main">
+    <picture>
+      <source media="(max-width: 375px)" srcset="images/bg-main-mobile.png">
+      <source media="(min-width: 375px)" srcset="images/bg-main-desktop.png" class="img-main">
+      <img src="images/bg-main-desktop.png" alt="main gradient background color">
+    </picture>
     <section class="form-container">
       <div class="bg-card-front">
         <img src="images/card-logo.svg" alt="card logo">
@@ -28,12 +32,13 @@
           0000 0000 0000 0000
         </p>
         <p class="card-username" id="card-username">jane appleseed</p>
-        <p class="card-expiration-date" id="card-expiration-date"><span id="card-expiration-date-month">00</span>/<span id="card-expiration-date-year">00</span></p>
+        <p class="card-expiration-date" id="card-expiration-date"><span id="card-expiration-date-month">00</span>/<span
+            id="card-expiration-date-year">00</span></p>
       </div>
       <div class="bg-card-back">
         <p id="back-cvc">000</p>
       </div>
-      <form novalidate onsubmit="return handleSubmit(this);">
+      <form novalidate onsubmit="return handleSubmit(this);" id="form">
         <div class="field">
           <label for="name">Cardholder Name</label>
           <input type="text" name="name" id="name" placeholder="e.g. Jane Appleseed" oninput="changeName(this.value)">
@@ -41,14 +46,16 @@
         </div>
         <div class="field">
           <label for="card-number">Card Number</label>
-          <input type="text" name="cardNumber" id="card-number" placeholder="e.g. 1234 5678 9123 0000" oninput="changeCardNumber(this.value)">
+          <input type="text" name="cardNumber" id="card-number" placeholder="e.g. 1234 5678 9123 0000"
+            oninput="changeCardNumber(this.value)">
           <span class="error"></span>
         </div>
         <section class="row">
           <div class="field field-row">
             <label for="exp-date">Exp. Date (MM/YY)</label>
             <div class="row-exp">
-              <input type="text" name="month" id="exp-date" placeholder="MM" oninput="changeExpirationMonth(this.value)">
+              <input type="text" name="month" id="exp-date" placeholder="MM"
+                oninput="changeExpirationMonth(this.value)">
               <input type="text" name="year" id="exp-date" placeholder="YY" oninput="changeExpirationYear(this.value)">
             </div>
             <span class="error" id="error-exp-date"></span>
@@ -61,6 +68,14 @@
         </section>
         <button type="submit">Confirm</button>
       </form>
+
+      <!-- Completed state start -->
+      <section class="success" id="success">
+        <img src="images/icon-complete.svg" alt="success">
+        <h2>Thank you!</h2>
+        <p>We've added your card details</p>
+        <button>Continue</button>
+      </section>
     </section>
 
     <!-- 0000 0000 0000 0000
@@ -69,16 +84,6 @@
 
     000 -->
   </div>
-
-
-
-  <!-- Completed state start -->
-  <section class="success">
-    <img src="images/icon-complete.svg" alt="success">
-    <h2>Thank you!</h2>
-    <p>We've added your card details</p>
-    <button>Continue</button>
-  </section>
 
   <script src="main.js"></script>
 </body>
